@@ -21,7 +21,7 @@ class App extends Component {
         }
 
         this.window_hammer = new HammerJS.Manager(window);
-        this.window_hammer.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: this.browser_dim/5 }) );
+        this.window_hammer.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: this.browser_dim/7 }) );
 
         this.keyEventActive = false;
 
