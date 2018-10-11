@@ -21,8 +21,9 @@ class App extends Component {
         }
 
         this.window_hammer = new HammerJS.Manager(window);
+        this.window_hammer.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: this.browser_dim/5 }) );
 
-        this.eventActive = false;
+        this.keyEventActive = false;
 
         this.startOver = this.startOver.bind(this);
         
@@ -123,7 +124,7 @@ class App extends Component {
     keyPressAfter() {
         this.createNewSquares().then(() => {
             this.checkGameOver();
-            this.eventActive = false;
+            this.keyEventActive = false;
         })
     }
 
@@ -240,38 +241,42 @@ class App extends Component {
 
     handleKeyPresses() {
         document.addEventListener("keydown", (evt) => {
-            if (!this.state.gameOver && !this.eventActive) {
-                this.eventActive = true;
+            if (!this.state.gameOver && !this.keyEventActive) {
+                this.keyEventActive = true;
                 let keycode = evt.keyCode;
                 if (keycode == 37) this.handleLeftPress();
                 else if (keycode == 38) this.handleUpPress();
                 else if (keycode == 39) this.handleRightPress();
                 else if (keycode == 40) this.handleDownPress();
-                else this.eventActive = false;
+                else this.keyEventActive = false;
             }
         }, false);
 
-        this.window_hammer.on("swipeleft", () => {
-            if (!this.state.gameOver && !this.eventActive) {
-                this.eventActive = true;
+        this.window_hammer.on("panend", () => {
+            this.panEventActive = false;
+        })
+
+        this.window_hammer.on("panleft", () => {
+            if (!this.state.gameOver && !this.panEventActive) {
+                this.panEventActive = true;
                 this.handleLeftPress();
             }
         })
-        this.window_hammer.on("swiperight", () => {
-            if (!this.state.gameOver && !this.eventActive) {
-                this.eventActive = true;
+        this.window_hammer.on("panright", () => {
+            if (!this.state.gameOver && !this.panEventActive) {
+                this.panEventActive = true;
                 this.handleRightPress();
             }
         })
-        this.window_hammer.on("swipeup", () => {
-            if (!this.state.gameOver && !this.eventActive) {
-                this.eventActive = true;
+        this.window_hammer.on("panup", () => {
+            if (!this.state.gameOver && !this.panEventActive) {
+                this.panEventActive = true;
                 this.handleUpPress();
             }
         })
-        this.window_hammer.on("swipedown", () => {
-            if (!this.state.gameOver && !this.eventActive) {
-                this.eventActive = true;
+        this.window_hammer.on("pandown", () => {
+            if (!this.state.gameOver && !this.panEventActive) {
+                this.panEventActive = true;
                 this.handleDownPress();
             }
         })
