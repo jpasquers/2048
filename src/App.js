@@ -252,6 +252,8 @@ class App extends Component {
             }
         }, false);
 
+        
+
         document.onmousedown = (ev) => {
             ev.preventDefault();
         };

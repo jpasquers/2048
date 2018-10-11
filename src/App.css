@@ -1,4 +1,5 @@
 .background {
     background-color: rgb(120,120,120);
-    position: absolute;
+    position: fixed;
+    overflow: hidden;
 }
