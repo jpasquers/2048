@@ -1,0 +1,52 @@
+.square {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    color: #776e65;
+    border: 1px solid black;
+    transition: top 0.1s linear;
+    transition: left 0.1s linear;
+}
+
+.square-4 {
+    color: #776e65;
+    background-color: #ede0c8;
+}
+
+.square-2 {
+    color: #776e65;
+    background-color: #eee4da;
+}
+
+.square-8 {
+    color: #f9f6f2;
+    background-color: #f2b179;
+}
+
+.square-16 {
+    color: #f9f6f2;
+    background-color: #f59563;
+}
+
+.square-32 {
+    color: #f9f6f2;
+    background-color: #f67c5f;
+}
+
+.square-64 {
+    color: #f9f6f2;
+    background-color: #f65e3b;
+}
+
+.square-128, .square-256, .square-512, .square-1024, .square-2048 {
+    color: #f9f6f2;
+    background-color: #edcc61;
+}
+
+.square-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+}
