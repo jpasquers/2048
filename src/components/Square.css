@@ -1,7 +1,7 @@
 .square {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 25%;
+    height: 25%;
     color: #776e65;
     border: 1px solid black;
     transition: top 0.1s linear;
@@ -48,5 +48,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 60px;
+    font-size: 4em;
 }

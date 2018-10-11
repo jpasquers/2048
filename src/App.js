@@ -2,15 +2,26 @@ import React, { Component } from 'react';
 import './App.css';
 import Square from './components/Square';
 import SquareModel from './SquareModel';
+import HammerJS from 'hammerjs';
 
 class App extends Component {
 
+    
+
     constructor() {
         super();
+
+        let browser_width = window.innerWidth || document.body.clientWidth;
+        let browser_height = window.innerHeight || document.body.clientHeight;
+        this.browser_dim = Math.min(browser_height,browser_width)
+
         this.state = {
             squareModels: [],
             gameOver: false
         }
+
+        this.window_hammer = new HammerJS.Manager(window);
+
         this.eventActive = false;
 
         this.startOver = this.startOver.bind(this);
@@ -239,6 +250,31 @@ class App extends Component {
                 else this.eventActive = false;
             }
         }, false);
+
+        this.window_hammer.on("swipeleft", () => {
+            if (!this.state.gameOver && !this.eventActive) {
+                this.eventActive = true;
+                this.handleLeftPress();
+            }
+        })
+        this.window_hammer.on("swiperight", () => {
+            if (!this.state.gameOver && !this.eventActive) {
+                this.eventActive = true;
+                this.handleRightPress();
+            }
+        })
+        this.window_hammer.on("swipeup", () => {
+            if (!this.state.gameOver && !this.eventActive) {
+                this.eventActive = true;
+                this.handleUpPress();
+            }
+        })
+        this.window_hammer.on("swipedown", () => {
+            if (!this.state.gameOver && !this.eventActive) {
+                this.eventActive = true;
+                this.handleDownPress();
+            }
+        })
     }
 
     startOver() {
@@ -262,10 +298,14 @@ class App extends Component {
     }
 
     render() {
+        let style = {
+            width: this.browser_dim,
+            height: this.browser_dim
+        }
         return (
             <div>
                 {this.renderGameOver()}
-                <div className="background">
+                <div style={style} className="background">
                     {this.renderSquares()}
                 </div>
             </div>
