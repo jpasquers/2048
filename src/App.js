@@ -252,29 +252,41 @@ class App extends Component {
             }
         }, false);
 
+        document.onmousedown = (ev) => {
+            ev.preventDefault();
+        };
+
+        document.onmousemove = (ev) => {
+            ev.preventDefault();
+        };
+
         this.window_hammer.on("panend", () => {
             this.panEventActive = false;
         })
 
-        this.window_hammer.on("panleft", () => {
+        this.window_hammer.on("panleft", (ev) => {
+            ev.preventDefault();
             if (!this.state.gameOver && !this.panEventActive) {
                 this.panEventActive = true;
                 this.handleLeftPress();
             }
         })
-        this.window_hammer.on("panright", () => {
+        this.window_hammer.on("panright", (ev) => {
+            ev.preventDefault();
             if (!this.state.gameOver && !this.panEventActive) {
                 this.panEventActive = true;
                 this.handleRightPress();
             }
         })
-        this.window_hammer.on("panup", () => {
+        this.window_hammer.on("panup", (ev) => {
+            ev.preventDefault();
             if (!this.state.gameOver && !this.panEventActive) {
                 this.panEventActive = true;
                 this.handleUpPress();
             }
         })
-        this.window_hammer.on("pandown", () => {
+        this.window_hammer.on("pandown", (ev) => {
+            ev.preventDefault();
             if (!this.state.gameOver && !this.panEventActive) {
                 this.panEventActive = true;
                 this.handleDownPress();
