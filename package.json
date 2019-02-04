@@ -12,9 +12,11 @@
   "dependencies": {
     "express": "^4.15.3",
     "hammerjs": "^2.0.8",
+    "pasquej-neat": "^1.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "rxjs": "^6.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
